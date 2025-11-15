@@ -20,11 +20,13 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
+         loader: () => fetch('https://travelease-vehicle-booking.vercel.app/models')
       },
       {
         path: "/allVehicles",
-        element: <AllVehicles />
+        element: <AllVehicles />,
+        loader: () => fetch('https://travelease-vehicle-booking.vercel.app/models')
       },
       {
         path: "/addVehicle",
