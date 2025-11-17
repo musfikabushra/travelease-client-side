@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import toast from "react-hot-toast";
-import { FcGoogle } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc"
 
 const Login = () => {
   const { signInUser, signInWithGoogle } = useAuth();
@@ -10,6 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();

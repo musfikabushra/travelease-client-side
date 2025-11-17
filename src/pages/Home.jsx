@@ -104,7 +104,7 @@ const Home = () => {
                       <FaBolt className="text-blue-600 dark:text-blue-400" /> {vehicle.location}
                     </p>
                     <p className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                      <FaBolt /> ${vehicle.pricePerDay}/day
+                       ${vehicle.pricePerDay}/day
                     </p>
                     <Link
                       to={`/vehicles/${vehicle._id}`}
