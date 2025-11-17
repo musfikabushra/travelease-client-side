@@ -10,7 +10,7 @@ const VehicleCard = ({ vehicle }) => {
       <div className="p-4">
         <h3 className="text-xl font-semibold text-gray-800">{vehicleName}</h3>
         <p className="text-sm text-gray-500">{category} • {location}</p>
-        <p className="text-blue-600 font-semibold mt-2">${pricePerDay}/day</p>
+        <p className="text-blue-600 font-semibold mt-2">{pricePerDay}/day</p>
         <p className="text-xs text-gray-400 mt-1">Added on {format(new Date(createdAt), "PP")}</p>
 
         <Link

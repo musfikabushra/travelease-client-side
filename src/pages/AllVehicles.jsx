@@ -133,7 +133,7 @@ const AllVehicles = () => {
                 </p>
 
                 <p className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                  <FaDollarSign /> ${vehicle.pricePerDay}/day
+                  <FaDollarSign /> {vehicle.pricePerDay}/day
                 </p>
 
                 <Link

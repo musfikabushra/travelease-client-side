@@ -28,8 +28,8 @@ const MyBookings = () => {
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="container mx-auto py-10">
-      <h2 className="text-3xl font-semibold text-center mt-15 mb-8 text-gray-800 dark:text-gray-100">
+    <div className="container mx-auto py-16 font-sans">
+      <h2 className="text-3xl font-semibold text-center mb-12 text-gray-800 dark:text-gray-100">
         My Bookings
       </h2>
 
