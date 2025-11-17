@@ -53,7 +53,7 @@ const AllVehicles = () => {
   return (
     <div className="container mx-auto py-12 px-4">
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-blue-700 dark:text-blue-400 mt-10">
-        <FaThLarge className="inline mr-2" /> All Vehicles
+         All Vehicles
       </h2>
 
       {/* Filters */}

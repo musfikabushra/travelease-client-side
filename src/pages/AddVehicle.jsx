@@ -36,7 +36,7 @@ const AddVehicle = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-12 px-4 transition-colors duration-300 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="min-h-screen flex justify-center items-center py-12 px-4 transition-colors duration-300  text-gray-900 dark:text-gray-100">
       <div className="w-full max-w-3xl bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 border border-gray-200 dark:border-gray-700">
         {/* Header */}
         <div className="text-center mb-8">

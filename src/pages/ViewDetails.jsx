@@ -52,7 +52,7 @@ const ViewDetails = () => {
   };
 
   return (
-    <div className="pt-24 pb-10 px-4 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="pt-24 pb-10 px-4  min-h-screen">
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden transition-colors duration-300">
         {/* Vehicle Image */}
         <img

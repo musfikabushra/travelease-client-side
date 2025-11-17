@@ -47,7 +47,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[80vh] px-4 bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="flex justify-center items-center min-h-[80vh] px-4  transition-colors">
       <div className="bg-white dark:bg-gray-800 shadow-md p-8 rounded-lg w-full max-w-md transition-colors">
         <h2 className="text-3xl font-semibold text-center mb-4 text-gray-900 dark:text-gray-100">
           Register

@@ -2,23 +2,28 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import axios from "axios";
-import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { FaCarSide, FaMapMarkerAlt, FaDollarSign } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const MyVehicles = () => {
-  const { user } = useAuth();
+  const { user } = useAuth(); // Logged-in user
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fetch vehicles owned by logged-in user only
   const fetchVehicles = () => {
     if (!user?.email) return;
     setLoading(true);
     axios
-      .get(`https://travelease-vehicle-booking.vercel.app/models?userEmail=${user.email}`)
+      .get(
+        `https://travelease-vehicle-booking.vercel.app/models?userEmail=${user.email}`
+      )
       .then((res) => setVehicles(res.data))
-      .catch(() => toast.error("Failed to load vehicles"))
+      .catch(() =>
+        Swal.fire("Error", "Failed to load your vehicles", "error")
+      )
       .finally(() => setLoading(false));
   };
 
@@ -26,15 +31,38 @@ const MyVehicles = () => {
     fetchVehicles();
   }, [user]);
 
+  // SweetAlert2 Delete
   const handleDelete = (id) => {
-    if (!confirm("Are you sure you want to delete this vehicle?")) return;
-    axios
-      .delete(`https://travelease-vehicle-booking.vercel.app/models/${id}`)
-      .then(() => {
-        toast.success("Vehicle deleted!");
-        fetchVehicles();
-      })
-      .catch(() => toast.error("Delete failed!"));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`https://travelease-vehicle-booking.vercel.app/models/${id}`)
+          .then(() => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your vehicle has been deleted.",
+              icon: "success",
+              timer: 2000,
+            });
+            fetchVehicles();
+          })
+          .catch(() => {
+            Swal.fire(
+              "Failed!",
+              "Something went wrong while deleting.",
+              "error"
+            );
+          });
+      }
+    });
   };
 
   if (loading) return <LoadingSpinner />;
@@ -60,6 +88,7 @@ const MyVehicles = () => {
               whileHover={{ scale: 1.03 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 transition-all duration-300"
             >
+              {/* Vehicle Image */}
               <div className="relative">
                 <img
                   src={vehicle.coverImage}
@@ -71,19 +100,23 @@ const MyVehicles = () => {
                 </span>
               </div>
 
+              {/* Vehicle Info */}
               <div className="p-5 space-y-2">
                 <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2">
-                  <FaCarSide className="text-blue-600 dark:text-blue-400" /> {vehicle.vehicleName}
+                  <FaCarSide className="text-blue-600 dark:text-blue-400" />{" "}
+                  {vehicle.vehicleName}
                 </h3>
 
                 <p className="text-gray-600 dark:text-gray-300 flex items-center gap-1">
-                  <FaMapMarkerAlt className="text-blue-600 dark:text-blue-400" /> {vehicle.location}
+                  <FaMapMarkerAlt className="text-blue-600 dark:text-blue-400" />{" "}
+                  {vehicle.location}
                 </p>
 
                 <p className="font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
                   <FaDollarSign /> ${vehicle.pricePerDay}/day
                 </p>
 
+                {/* Buttons */}
                 <div className="flex flex-wrap gap-2 mt-4">
                   <Link
                     to={`/vehicles/${vehicle._id}`}
@@ -91,12 +124,14 @@ const MyVehicles = () => {
                   >
                     View Details
                   </Link>
+
                   <Link
                     to={`/updateVehicle/${vehicle._id}`}
                     className="flex-1 text-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
                   >
                     Update
                   </Link>
+
                   <button
                     onClick={() => handleDelete(vehicle._id)}
                     className="flex-1 text-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
