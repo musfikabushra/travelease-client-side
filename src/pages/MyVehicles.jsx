@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // useNavigate import
 import { useAuth } from "../hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { FaCarSide, FaMapMarkerAlt, FaDollarSign } from "react-icons/fa";
+import { FaCarSide, FaMapMarkerAlt, FaDollarSign, FaPlus } from "react-icons/fa"; // FaPlus icon
 import { motion } from "framer-motion";
 
 const MyVehicles = () => {
   const { user } = useAuth(); // Logged-in user
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); // useNavigate hook
 
   // Fetch vehicles owned by logged-in user only
   const fetchVehicles = () => {
@@ -69,9 +70,19 @@ const MyVehicles = () => {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <h2 className="text-4xl mt-5 font-bold text-center mb-12 text-blue-700 dark:text-blue-400">
-        My Vehicles
-      </h2>
+      <div className="flex justify-between items-center mb-8 mt-20">
+        <h2 className="text-4xl font-bold text-blue-700 dark:text-blue-400">
+          My Vehicles
+        </h2>
+
+        {/* Add Vehicle Button */}
+        <button
+          onClick={() => navigate("/addVehicle")}
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
+        >
+          <FaPlus /> Add Vehicle
+        </button>
+      </div>
 
       {vehicles.length === 0 ? (
         <p className="text-center text-gray-500 dark:text-gray-300">

@@ -15,12 +15,9 @@ const Navbar = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Toggle theme
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  // Mobile menu toggle
+  // Mobile menu state
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleMobileMenu = () => setMobileOpen(!mobileOpen);
 
@@ -41,20 +38,21 @@ const Navbar = () => {
   return (
     <nav className="bg-[#1E40AF] dark:bg-[#1E3A8A] text-white shadow-md fixed w-full z-50 transition-colors duration-300">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
-
         {/* Brand */}
         <Link to="/" className="text-2xl font-bold hover:text-blue-300">
           TravelEase
         </Link>
 
-        {/* Desktop menu */}
+        {/* Desktop Links */}
         <ul className="hidden md:flex gap-6">
           {links.map((link) => (
             <li key={link.path}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  isActive ? "underline" : "hover:text-blue-300"
+                  isActive
+                    ? "underline underline-offset-4 font-semibold"
+                    : "hover:text-blue-300 transition-colors duration-300"
                 }
               >
                 {link.name}
@@ -63,24 +61,23 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Right side */}
+        {/* Right side (desktop) */}
         <div className="hidden md:flex items-center gap-4">
-
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300"
+            className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300 transition-colors duration-300"
           >
             {theme === "light" ? <FaMoon /> : <FaSun />}
           </button>
 
-          
+          {/* User info */}
           {user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 group relative">
               {user.photoURL ? (
                 <img
                   src={user.photoURL}
-                  alt="User"
+                  alt={user.displayName || "User"}
                   className="w-10 h-10 rounded-full border-2 border-white"
                 />
               ) : (
@@ -88,9 +85,17 @@ const Navbar = () => {
                   {user.displayName?.charAt(0).toUpperCase() || "U"}
                 </div>
               )}
+
+              {/* Display name on hover */}
+              {user.displayName && (
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  {user.displayName}
+                </span>
+              )}
+
               <button
                 onClick={handleLogout}
-                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200"
+                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200 transition-colors duration-300"
               >
                 Log Out
               </button>
@@ -99,13 +104,13 @@ const Navbar = () => {
             <div className="flex gap-2">
               <Link
                 to="/login"
-                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200"
+                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200 transition-colors duration-300"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="border border-white px-3 py-1 rounded-md hover:bg-white hover:text-blue-600"
+                className="border border-white px-3 py-1 rounded-md hover:bg-white hover:text-blue-600 transition-colors duration-300"
               >
                 Register
               </Link>
@@ -119,9 +124,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#1E40AF] dark:bg-[#1E3A8A] text-white px-4 pb-4 space-y-4">
+        <div className="md:hidden bg-[#1E40AF] dark:bg-[#1E3A8A] text-white px-4 pb-4 space-y-4 transition-all duration-300">
           <ul className="flex flex-col gap-4">
             {links.map((link) => (
               <li key={link.path}>
@@ -129,7 +134,9 @@ const Navbar = () => {
                   to={link.path}
                   onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
-                    isActive ? "underline" : "hover:text-blue-300"
+                    isActive
+                      ? "underline underline-offset-4 font-semibold"
+                      : "hover:text-blue-300 transition-colors duration-300"
                   }
                 >
                   {link.name}
@@ -139,19 +146,21 @@ const Navbar = () => {
           </ul>
 
           <div className="flex items-center gap-4 mt-4">
-
-            {/* Mobile theme toggle */}
+            {/* Theme toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300"
+              className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300 transition-colors duration-300"
             >
               {theme === "light" ? <FaMoon /> : <FaSun />}
             </button>
 
             {user ? (
               <button
-                onClick={handleLogout}
-                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200"
+                onClick={() => {
+                  handleLogout();
+                  setMobileOpen(false);
+                }}
+                className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200 transition-colors duration-300"
               >
                 Log Out
               </button>
@@ -159,13 +168,15 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200"
+                  onClick={() => setMobileOpen(false)}
+                  className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-gray-200 transition-colors duration-300"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="border border-white px-3 py-1 rounded-md hover:bg-white hover:text-blue-600"
+                  onClick={() => setMobileOpen(false)}
+                  className="border border-white px-3 py-1 rounded-md hover:bg-white hover:text-blue-600 transition-colors duration-300"
                 >
                   Register
                 </Link>
