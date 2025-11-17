@@ -20,7 +20,10 @@ const MyBookings = () => {
       .then((res) => setBookings(res.data))
       .catch((err) => {
         console.error(err);
-        toast.error("Failed to load bookings");
+       
+        const message =
+          err.response?.data?.message || "You have already booked this vehicle";
+        toast.error(message);
       })
       .finally(() => setLoading(false));
   }, [user]);

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth"; 
+import { useAuth } from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-  const { signInUser, signInWithGoogle } = useAuth(); 
+  const { signInUser, signInWithGoogle } = useAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,6 +70,13 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+        <p
+          className="mt-4 text-right text-blue-600 dark:text-blue-400 cursor-pointer underline"
+        
+        >
+          Forgot Password?
+        </p>
+
 
         <button
           onClick={handleGoogleLogin}
