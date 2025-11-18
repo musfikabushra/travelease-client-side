@@ -56,7 +56,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl font-semibold text-center mb-10"
+          className="text-3xl text-blue-700 dark:text-blue-400 font-semibold text-center mb-10"
         >
           Latest Vehicles
         </motion.h2>
