@@ -27,7 +27,7 @@ const AllVehicles = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // Filter + Sort Logic
+ 
   useEffect(() => {
     let data = [...vehicles];
 
