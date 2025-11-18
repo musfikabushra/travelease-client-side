@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  // Mobile menu state
+  // Mobile menu
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleMobileMenu = () => setMobileOpen(!mobileOpen);
 
@@ -27,9 +27,13 @@ const Navbar = () => {
       .catch(() => toast.error("Logout failed!"));
   };
 
-  const links = [
+  // Public & Private Links
+  const publicLinks = [
     { name: "Home", path: "/" },
     { name: "All Vehicles", path: "/allVehicles" },
+  ];
+
+  const privateLinks = [
     { name: "Add Vehicle", path: "/addVehicle" },
     { name: "My Vehicles", path: "/myVehicles" },
     { name: "My Bookings", path: "/myBookings" },
@@ -38,14 +42,17 @@ const Navbar = () => {
   return (
     <nav className="bg-[#1E40AF] dark:bg-[#1E3A8A] text-white shadow-md fixed w-full z-50 transition-colors duration-300">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-0">
+
         {/* Brand */}
         <Link to="/" className="text-2xl font-bold hover:text-blue-300">
           TravelEase
         </Link>
 
-        {/* Desktop Links */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6">
-          {links.map((link) => (
+
+          {/* Public Links */}
+          {publicLinks.map((link) => (
             <li key={link.path}>
               <NavLink
                 to={link.path}
@@ -59,11 +66,28 @@ const Navbar = () => {
               </NavLink>
             </li>
           ))}
+
+          {/* Private Links (Only if user logged in) */}
+          {user &&
+            privateLinks.map((link) => (
+              <li key={link.path}>
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "underline underline-offset-4 font-semibold"
+                      : "hover:text-blue-300 transition-colors duration-300"
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
         </ul>
 
-        
+        {/* Right side user + theme */}
         <div className="hidden md:flex items-center gap-4">
-         
+          {/* Theme toggle */}
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300 transition-colors duration-300"
@@ -71,7 +95,7 @@ const Navbar = () => {
             {theme === "light" ? <FaMoon /> : <FaSun />}
           </button>
 
-          
+          {/* User Section */}
           {user ? (
             <div className="flex items-center gap-2 group relative">
               {user.photoURL ? (
@@ -117,17 +141,19 @@ const Navbar = () => {
           )}
         </div>
 
-        
+        {/* Mobile Button */}
         <button onClick={toggleMobileMenu} className="md:hidden text-2xl">
           {mobileOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      
+      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[#1E40AF] dark:bg-[#1E3A8A] text-white px-4 pb-4 space-y-4 transition-all duration-300">
+
+          {/* Public Links */}
           <ul className="flex flex-col gap-4">
-            {links.map((link) => (
+            {publicLinks.map((link) => (
               <li key={link.path}>
                 <NavLink
                   to={link.path}
@@ -142,10 +168,29 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ))}
+
+            {/* Private Links */}
+            {user &&
+              privateLinks.map((link) => (
+                <li key={link.path}>
+                  <NavLink
+                    to={link.path}
+                    onClick={() => setMobileOpen(false)}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "underline underline-offset-4 font-semibold"
+                        : "hover:text-blue-300 transition-colors duration-300"
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
           </ul>
 
+          {/* Mobile bottom user section */}
           <div className="flex items-center gap-4 mt-4">
-            
+            {/* Theme */}
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-white text-blue-600 dark:bg-gray-700 dark:text-yellow-300 transition-colors duration-300"
