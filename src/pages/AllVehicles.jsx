@@ -83,7 +83,7 @@ const AllVehicles = () => {
           <option value="Khulna, Bangladesh">Khulna</option>
         </select>
 
-        {/* Price Sort */}
+        
         <select
           onChange={(e) => setSort(e.target.value)}
           className="p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
