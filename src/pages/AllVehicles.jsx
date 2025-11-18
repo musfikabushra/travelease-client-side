@@ -70,7 +70,6 @@ const AllVehicles = () => {
           <option value="Van">Van</option>
         </select>
 
-        {/* Location Filter */}
         <select
           onChange={(e) => setLocation(e.target.value)}
           className="p-3 rounded-lg border dark:bg-gray-800 dark:text-white"
