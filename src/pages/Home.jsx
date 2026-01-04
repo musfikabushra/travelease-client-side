@@ -167,7 +167,7 @@ const Home = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
         >
-          {vehicles.slice(0, 8).map((vehicle) => (
+          {vehicles.slice(0, 4).map((vehicle) => (
             <motion.div
               key={vehicle._id}
               variants={fadeInUp}
@@ -188,8 +188,8 @@ const Home = () => {
                     <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Rate</p>
                     <span className="text-2xl font-black text-blue-600 dark:text-blue-400">${vehicle.pricePerDay}<span className="text-xs font-normal text-gray-400">/day</span></span>
                   </div>
-                  <Link to={`/vehicles/${vehicle._id}`} className="w-14 h-14 bg-gray-900 dark:bg-blue-600 text-white rounded-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg shadow-blue-500/20">
-                    <FaArrowRight />
+                  <Link to={`/vehicles/${vehicle._id}`} className=" w-1/2 h-1/2 bg-gradient-to-r from-blue-600 to-indigo-400  text-white p-4 rounded-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg">
+                    View details
                   </Link>
                 </div>
               </div>

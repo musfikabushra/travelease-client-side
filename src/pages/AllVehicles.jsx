@@ -225,9 +225,9 @@ const AllVehicles = () => {
                       </div>
                       <Link 
                         to={`/vehicles/${vehicle._id}`} 
-                        className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-400  text-white rounded-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg"
+                        className="w-1/2 h-1/2 bg-gradient-to-r from-blue-600 to-indigo-400  text-white p-4 rounded-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg"
                       >
-                        <FaArrowRight />
+                        View details
                       </Link>
                     </div>
                   </div>

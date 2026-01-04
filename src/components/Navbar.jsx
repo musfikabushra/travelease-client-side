@@ -117,7 +117,7 @@ const Navbar = () => {
                 </div>
 
                 <Link
-                  to="/profile"
+                  to="/dashboard/profile"
                   className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-white/10"
                 >
                   Profile
