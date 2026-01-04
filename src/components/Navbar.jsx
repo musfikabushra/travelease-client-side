@@ -54,7 +54,7 @@ const Navbar = () => {
         {/* ---------------- Logo ---------------- */}
         <Link
           to="/"
-          className="text-2xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-400 
+          className="text-3xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-400 
            dark:from-blue-800 dark:to-purple-700 bg-clip-text text-transparent font-extrabold"
         >
           TravelEase

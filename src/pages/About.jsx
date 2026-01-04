@@ -160,29 +160,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* 5. Minimal CTA Section */}
-      <section className="py-24 px-6 text-center">
-        <motion.div 
-           initial={{ opacity: 0, y: 50 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-700 p-16 rounded-[4rem] text-white shadow-2xl relative overflow-hidden"
-        >
-          <div className="relative z-10">
-            <h2 className="text-4xl md:text-5xl font-black mb-6">Drive Your Story.</h2>
-            <p className="text-blue-100 text-lg mb-10 opacity-80">Join 50,000+ happy travelers who trust TravelEase for their journeys.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/allVehicles" className="px-10 py-4 bg-white text-blue-700 font-black rounded-2xl hover:bg-gray-100 transition-all">
-                Get Started
-              </Link>
-              <Link to="/contact" className="px-10 py-4 bg-blue-500/20 backdrop-blur-md border border-white/30 text-white font-black rounded-2xl hover:bg-white/10 transition-all">
-                Talk to Us
-              </Link>
-            </div>
+   {/* CINEMATIC CTA */}
+<section className="py-20">
+  <div className="container mx-auto px-6">
+    <div className="relative h-[500px] rounded-[4rem] overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2083" className="w-full h-full object-cover" alt="cta" />
+      <div className="absolute inset-0 bg-blue-900/40 backdrop-blur-[2px] flex items-center justify-center text-center p-6">
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }}>
+          <h2 className="text-5xl  font-black text-white mb-8">Ready to Start Your <br /> Premium Journey?</h2>
+          <div className="flex flex-wrap justify-center gap-6">
+            <button className="px-12 py-5 bg-white text-blue-900 rounded-2xl font-black text-lg hover:bg-blue-50 transition-colors">Book Now</button>
+            <button className="px-12 py-5 bg-transparent border-2 border-white text-white rounded-2xl font-black text-lg hover:bg-white hover:text-blue-900 transition-all">Contact Sales</button>
           </div>
-          {/* Decorative Circle */}
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
         </motion.div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

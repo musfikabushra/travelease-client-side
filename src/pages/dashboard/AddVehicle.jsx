@@ -184,7 +184,7 @@ const AddVehicle = () => {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={loading}
-                className="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-3 transition-all hover:bg-indigo-700 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-400  text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-3 transition-all hover:bg-indigo-700 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <span className="flex items-center gap-2">

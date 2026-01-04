@@ -77,12 +77,12 @@ const MyVehicles = () => {
         </h2>
 
         {/* Add Vehicle Button */}
-        <button
+        <Link to="/dashboard/add-vehicle"
           onClick={() => navigate("/addVehicle")}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
+          className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-400  text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
         >
           <FaPlus /> Add Vehicle
-        </button>
+        </Link>
       </div>
 
       {vehicles.length === 0 ? (
@@ -132,7 +132,7 @@ const MyVehicles = () => {
                 <div className="flex flex-wrap gap-2 mt-4">
                   <Link
                     to={`/vehicles/${vehicle._id}`}
-                    className="flex-1 text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
+                    className="flex-1 text-center bg-gradient-to-r from-blue-600 to-indigo-400  text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300"
                   >
                     View Details
                   </Link>

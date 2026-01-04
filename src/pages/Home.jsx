@@ -198,6 +198,8 @@ const Home = () => {
         </motion.div>
       </section>
 
+      
+
       {/* 4. MODERN WHY CHOOSE US (CREATIVE LOOK) */}
       <section className="py-32 bg-[#f8faff] dark:bg-[#080d17] overflow-hidden">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
@@ -209,7 +211,7 @@ const Home = () => {
               className="relative z-10 p-6 bg-white dark:bg-gray-900 rounded-[3rem] shadow-2xl border border-gray-100 dark:border-white/5"
             >
               <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070" className="rounded-[2.5rem]" />
-              <div className="absolute -bottom-10 -right-10 bg-blue-600 p-10 rounded-[2.5rem] shadow-2xl text-white">
+              <div className="absolute -bottom-10 -right-10 bg-gradient-to-r from-blue-600 to-indigo-400  p-10 rounded-[2.5rem] shadow-2xl text-white">
                 <p className="text-5xl font-black mb-1">10+</p>
                 <p className="text-xs font-black uppercase tracking-[0.2em] opacity-80">Years of Luxury</p>
               </div>
@@ -261,6 +263,42 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CATEGORY EXPLORER */}
+<section className="py-24 bg-[#f8faff] dark:bg-[#080d17]">
+  <div className="container mx-auto px-6">
+    <div className="flex flex-col md:flex-row justify-between items-center mb-16">
+      <h2 className="text-4xl font-black dark:text-white">Browse by <span className="text-4xl font-black tracking-tight bg-gradient-to-r from-blue-600 to-indigo-400 
+           dark:from-blue-800 dark:to-purple-700 bg-clip-text text-transparent font-extrabold">Lifestyle</span></h2>
+      <div className="flex gap-4 mt-6 md:mt-0 overflow-x-auto pb-4 w-full md:w-auto">
+        {['Sedan', 'SUV', 'Luxury', 'Electric'].map((cat) => (
+          <button key={cat} className="px-8 py-3 rounded-full bg-white dark:bg-gray-900 shadow-sm border border-gray-100 dark:border-white/5 font-bold hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap">
+            {cat}
+          </button>
+        ))}
+      </div>
+    </div>
+    
+    <div className="grid md:grid-cols-2 gap-8">
+      <div className="relative group overflow-hidden rounded-[3rem] h-[400px]">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="luxury" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-12">
+          <h3 className="text-3xl font-bold text-white mb-2">Executive Luxury</h3>
+          <p className="text-white/70 mb-6">Experience the pinnacle of comfort and status.</p>
+          <Link to="/allVehicles" className="text-blue-400 font-bold flex items-center gap-2">Explore Collection <FaArrowRight /></Link>
+        </div>
+      </div>
+      <div className="relative group overflow-hidden rounded-[3rem] h-[400px]">
+        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="suv" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-12">
+          <h3 className="text-3xl font-bold text-white mb-2">Adventure Ready</h3>
+          <p className="text-white/70 mb-6">Tackle any terrain with our high-performance SUVs.</p>
+          <Link to="/allVehicles" className="text-blue-400 font-bold flex items-center gap-2">Explore Collection <FaArrowRight /></Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       {/* 6. TESTIMONIALS (GLASS DESIGN) */}
       <section className="py-32 bg-[#0a0f1a] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
@@ -291,6 +329,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+     
 
       {/* 7. APP PROMO (MODERN GRADIENT) */}
       <section className="py-32 container mx-auto px-6">
@@ -353,10 +393,97 @@ const Home = () => {
       <section className="py-20 bg-white dark:bg-[#0a0f1a] transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-6">
 
-
-
         </div>
       </section>
+
+
+{/* ANIMATED REVEAL SECTION */}
+<section className="py-32 overflow-hidden bg-white dark:bg-[#0a0f1a]">
+  <div className="container mx-auto px-6">
+    <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      
+      {/* Left Side: Animated Image with Floating Effect */}
+      <motion.div 
+        className="lg:w-1/2 relative"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
+        <div className="relative z-10 rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-gray-50 dark:border-gray-900">
+          <img 
+            src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=2070" 
+            alt="Luxury Interior" 
+            className="w-full h-[500px] object-cover"
+          />
+        </div>
+        
+        {/* Floating Abstract Element */}
+        <motion.div 
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-10 -left-10 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl -z-10"
+        />
+        <div className="absolute top-1/2 -right-10 w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl -z-10" />
+      </motion.div>
+
+      {/* Right Side: Animated Content */}
+      <motion.div 
+        className="lg:w-1/2 space-y-8"
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+      >
+        <div className="inline-block">
+          <span className="bg-blue-600/10 text-blue-600 px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest border border-blue-600/20">
+            The Next Generation
+          </span>
+        </div>
+
+        <h2 className="text-5xl font-black leading-tight text-gray-900 dark:text-white">
+          Where Technology Meets <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400 
+           dark:from-blue-800 dark:to-purple-700">Pure Comfort</span>
+        </h2>
+
+        <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed max-w-xl">
+          Experience a new era of driving. Our 2026 fleet features AI-driven safety, 
+          ultra-fast charging electric engines, and interiors designed by award-winning architects.
+        </p>
+
+        {/* Feature List within the section */}
+        <div className="grid sm:grid-cols-2 gap-6 pt-4">
+          {[
+            { title: "Smart Pilot", desc: "Level 4 Autonomy" },
+            { title: "Biometric Entry", desc: "Keyless Security" },
+            { title: "Air Purifier", desc: "HEPA Filtration" },
+            { title: "Active Noise", desc: "Studio Silence" }
+          ].map((item, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + (i * 0.1) }}
+              className="flex items-start gap-4"
+            >
+              <div className="mt-1 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/40">
+                <FaCheckCircle className="text-white text-[10px]" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 dark:text-white text-sm uppercase tracking-wide">{item.title}</h4>
+                <p className="text-xs text-gray-400">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      
+      </motion.div>
+
+    </div>
+  </div>
+</section>
 
     </div>
   );

@@ -81,7 +81,7 @@ const Contact = () => {
             ))}
 
             {/* 💎 Special VIP Support Card */}
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-8 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
+            <div className="bg-gradient-to-br bg-gradient-to-r from-blue-600 to-indigo-400  p-8 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
               <div className="relative z-10">
                 <Globe size={40} className="mb-4 opacity-30 group-hover:rotate-45 transition-transform duration-700" />
                 <h3 className="text-2xl font-black mb-2">Corporate?</h3>
@@ -158,7 +158,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit" 
-                className="w-full py-5 bg-blue-600 hover:bg-blue-700 text-white font-black text-lg rounded-2xl shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 transition-all"
+                className="w-full py-5 bg-gradient-to-r from-blue-600 to-indigo-400  text-white font-black text-lg rounded-2xl shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 transition-all"
               >
                 <Send size={20} />
                 Send Request

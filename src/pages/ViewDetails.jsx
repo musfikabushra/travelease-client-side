@@ -64,7 +64,7 @@ const ViewDetails = () => {
             animate={{ opacity: 1, x: 0 }}
             className="space-y-4"
           >
-            <div className="group relative rounded-[2.5rem] overflow-hidden shadow-2xl border dark:border-white/5">
+            <div className="group relative rounded-[2.5rem] overflow-hidden shadow-2xl  ">
               <img
                 src={vehicle.coverImage}
                 alt={vehicle.vehicleName}
@@ -84,7 +84,7 @@ const ViewDetails = () => {
                    <img src={vehicle.coverImage} className="w-full h-full object-cover grayscale hover:grayscale-0" />
                 </div>
               ))}
-              <div className="h-24 rounded-2xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xs text-center p-2 cursor-pointer">
+              <div className="h-24 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-400  flex items-center justify-center text-white font-bold text-xs text-center p-2 cursor-pointer">
                 +12 More Photos
               </div>
             </div>
@@ -99,7 +99,7 @@ const ViewDetails = () => {
             <div className="inline-flex items-center gap-2 text-indigo-600 font-black text-xs uppercase tracking-[0.3em] mb-4">
               <ShieldCheck size={16} /> Verified TravelEase Vehicle
             </div>
-            <h1 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tighter">
+            <h1 className="text-5xl  font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-tighter">
               {vehicle.vehicleName}
             </h1>
             

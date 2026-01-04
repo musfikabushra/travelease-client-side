@@ -225,7 +225,7 @@ const AllVehicles = () => {
                       </div>
                       <Link 
                         to={`/vehicles/${vehicle._id}`} 
-                        className="w-12 h-12 bg-gray-900 dark:bg-blue-600 text-white rounded-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg"
+                        className="w-12 h-12 bg-gradient-to-r from-blue-600 to-indigo-400  text-white rounded-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all shadow-lg"
                       >
                         <FaArrowRight />
                       </Link>
@@ -256,7 +256,7 @@ const AllVehicles = () => {
                 onClick={() => setCurrentPage(i + 1)}
                 className={`w-12 h-12 rounded-xl font-black transition-all ${
                   currentPage === i + 1 
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30" 
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-400  text-white shadow-lg shadow-blue-500/30" 
                   : "bg-gray-100 dark:bg-white/5 dark:text-white hover:bg-gray-200"
                 }`}
               >
